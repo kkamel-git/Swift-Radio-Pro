@@ -1,0 +1,60 @@
+{
+  "originHash" : "b2a1f7635590f12543f28c001606871808616ddf12b15186e524fb9b17408dbf",
+  "pins" : [
+    {
+      "identity" : "bugsnag-cocoa",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/bugsnag/bugsnag-cocoa",
+      "state" : {
+        "revision" : "f4348c29cc881ce80e4e22a46f29d7f5a18e924b",
+        "version" : "6.34.1"
+      }
+    },
+    {
+      "identity" : "bugsnag-cocoa-performance",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/bugsnag/bugsnag-cocoa-performance",
+      "state" : {
+        "revision" : "4c97c9f36f77ba96d831ebf7e479dd0bb5f42b30",
+        "version" : "1.16.0"
+      }
+    },
+    {
+      "identity" : "fradioplayer",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/fethica/FRadioPlayer.git",
+      "state" : {
+        "branch" : "v0.2.0",
+        "revision" : "c3f472ed8cb59b442312362bca363863962c88b3"
+      }
+    },
+    {
+      "identity" : "luciq-ios-sdk",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/luciqai/luciq-ios-sdk",
+      "state" : {
+        "revision" : "faf92af0848c853f948a1d902d1dd24375c75429",
+        "version" : "19.1.0"
+      }
+    },
+    {
+      "identity" : "nvactivityindicatorview",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/ninjaprox/NVActivityIndicatorView.git",
+      "state" : {
+        "revision" : "121455c4e630fcb95aaefd7e4257b0c2e3cfe6d5",
+        "version" : "5.2.0"
+      }
+    },
+    {
+      "identity" : "spring",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/fethica/Spring.git",
+      "state" : {
+        "branch" : "master",
+        "revision" : "63d6b2b4339606181617caddea3a988aa65bcadd"
+      }
+    }
+  ],
+  "version" : 3
+}
