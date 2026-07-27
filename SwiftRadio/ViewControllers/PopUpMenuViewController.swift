@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import LuciqSDK
 
 protocol PopUpMenuViewControllerDelegate: AnyObject {
     func didTapWebsiteButton(_ popUpMenuViewController: PopUpMenuViewController)
@@ -40,6 +41,14 @@ class PopUpMenuViewController: UIViewController {
         let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(closeButtonPressed))
         backgroundView.isUserInteractionEnabled = true
         backgroundView.addGestureRecognizer(gestureRecognizer)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        // Set user attribute with screen name
+        let screenName = String(describing: type(of: self)).replacingOccurrences(of: "ViewController", with: "")
+        Luciq.setUserAttribute(screenName, withKey: "Team Name")
     }
     
     // MARK: - IBActions

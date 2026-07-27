@@ -55,6 +55,14 @@ class InfoDetailViewController: UIViewController {
         //BugReporting.show(with: .bug, options: [.emailFieldHidden])
         //Instabug.show()
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        // Set user attribute with screen name
+        let screenName = String(describing: type(of: self)).replacingOccurrences(of: "ViewController", with: "")
+        Luciq.setUserAttribute(screenName, withKey: "Team Name")
+    }
     // MARK: - UI Helpers
 
     func setupStationText() {
@@ -90,7 +98,6 @@ class InfoDetailViewController: UIViewController {
     // MARK: - IBActions
     
     @IBAction func okayButtonPressed(_ sender: UIButton) {
-        fatalError() // Crash when button is pressed
         _ = navigationController?.popViewController(animated: true)
     }
     

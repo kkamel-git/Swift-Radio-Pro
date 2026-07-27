@@ -8,6 +8,7 @@
 
 import UIKit
 import MessageUI
+import LuciqSDK
 
 protocol AboutViewControllerDelegate: AnyObject {
     func didTapEmailButton(_ aboutViewController: AboutViewController)
@@ -22,6 +23,14 @@ class AboutViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        // Set user attribute with screen name
+        let screenName = String(describing: type(of: self)).replacingOccurrences(of: "ViewController", with: "")
+        Luciq.setUserAttribute(screenName, withKey: "Team Name")
     }
    
     // MARK: - IBActions

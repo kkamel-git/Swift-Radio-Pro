@@ -1,22 +1,22 @@
 {
-  "originHash" : "b2a1f7635590f12543f28c001606871808616ddf12b15186e524fb9b17408dbf",
+  "originHash" : "15db127e77ad89292a55a2093872d8751882a8c637b7ed37fdb72f46c8bcea33",
   "pins" : [
     {
-      "identity" : "bugsnag-cocoa",
+      "identity" : "capture-ios",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/bugsnag/bugsnag-cocoa",
+      "location" : "https://github.com/bitdriftlabs/capture-ios",
       "state" : {
-        "revision" : "f4348c29cc881ce80e4e22a46f29d7f5a18e924b",
-        "version" : "6.34.1"
+        "revision" : "440769e38a0636c3ae0d127c264f92a0b25a3e4a",
+        "version" : "0.22.13"
       }
     },
     {
-      "identity" : "bugsnag-cocoa-performance",
+      "identity" : "cocoalumberjack",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/bugsnag/bugsnag-cocoa-performance",
+      "location" : "https://github.com/CocoaLumberjack/CocoaLumberjack.git",
       "state" : {
-        "revision" : "4c97c9f36f77ba96d831ebf7e479dd0bb5f42b30",
-        "version" : "1.16.0"
+        "revision" : "a9ed4b6f9bdedce7d77046f43adfb8ce1fd54114",
+        "version" : "3.9.0"
       }
     },
     {
@@ -33,8 +33,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/luciqai/luciq-ios-sdk",
       "state" : {
-        "revision" : "faf92af0848c853f948a1d902d1dd24375c75429",
-        "version" : "19.1.0"
+        "revision" : "6d8b21ef2ba323ff4cb31d929bcfb2c25c2f6d3b",
+        "version" : "19.8.1"
       }
     },
     {
@@ -53,6 +53,24 @@
       "state" : {
         "branch" : "master",
         "revision" : "63d6b2b4339606181617caddea3a988aa65bcadd"
+      }
+    },
+    {
+      "identity" : "swift-log",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/apple/swift-log",
+      "state" : {
+        "revision" : "bbd81b6725ae874c69e9b8c8804d462356b55523",
+        "version" : "1.10.1"
+      }
+    },
+    {
+      "identity" : "swiftybeaver",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/SwiftyBeaver/SwiftyBeaver.git",
+      "state" : {
+        "revision" : "8cba041db09596183331d123f337d0eb2e6e8e91",
+        "version" : "2.1.1"
       }
     }
   ],

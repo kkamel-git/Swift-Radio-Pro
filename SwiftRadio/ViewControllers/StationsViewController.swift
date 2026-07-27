@@ -232,15 +232,38 @@ extension StationsViewController: UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: true)
         
         let station = searchController.isActive ? manager.searchedStations[indexPath.item] : manager.stations[indexPath.item]
+        let webpageURL = "https://radio.swiftradio.app/stations/\(station.name.lowercased().replacingOccurrences(of: " ", with: "-"))"
         
-        // Log user station selection
-        LCQLog.logInfo("User selected station: \(station.name)")
+        LCQLog.logInfo("WebView Page Load | webview_event=page_load | webpage_url=\(webpageURL) | page_title=\(station.name) | referrer=https://radio.swiftradio.app/stations | webview_id=main_webview | load_type=navigation")
+        
+        Luciq.logUserEvent(withName: "WebView Page Load", parameters: [
+            UserEventParam(key: "webview_event", value: "page_load"),
+            UserEventParam(key: "webpage_url", value: webpageURL),
+            UserEventParam(key: "page_title", value: station.name),
+            UserEventParam(key: "referrer", value: "https://radio.swiftradio.app/stations"),
+            UserEventParam(key: "webview_id", value: "main_webview"),
+            UserEventParam(key: "load_type", value: "navigation")
+        ])
         
         // Start flow instrumentation ONLY when user selects "Absolute Country Hits"
         if station.name == "Absolute Country Hits" {
             APM.startFlow(withName: "station-selection-flow")
         }
-        
+
+        // Classic Rock: show "This radio can't be played" and report non-fatal
+        if station.name == "Classic Rock" {
+            let unavailableVC = RadioUnavailableViewController()
+            unavailableVC.modalPresentationStyle = .pageSheet
+            if #available(iOS 15.0, *) {
+                if let sheet = unavailableVC.sheetPresentationController {
+                    sheet.detents = [.medium()]
+                    sheet.prefersGrabberVisible = true
+                }
+            }
+            present(unavailableVC, animated: true)
+            return
+        }
+
         pushNowPlayingController(with: station)
     }
 }

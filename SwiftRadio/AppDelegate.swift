@@ -9,8 +9,7 @@
 import UIKit
 import LuciqSDK
 
-import Bugsnag
-import BugsnagPerformance
+import Capture
 
 import MediaPlayer
 import FRadioPlayer
@@ -28,14 +27,31 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         
          
-        //Luciq
+        // Luciq – Video-like replay (1 screenshot/sec, normal quality). Configure before start.
+        SessionReplay.screenshotCapturingMode = .frequency
+        SessionReplay.screenshotCaptureInterval = 1000  // 1 screenshot per second (ms)
+        SessionReplay.screenshotQualityMode = .normal
+
+        // Luciq
         Luciq.start(withToken: "be6b64add30a6d98f6eaf6fd3928ddd3", invocationEvents: [.floatingButton, .shake])
+        //beta token = 8e45c233b1bc16e2cdafe392ec1e04ed
+        //prod token = be6b64add30a6d98f6eaf6fd3928ddd3
         Luciq.welcomeMessageMode = WelcomeMessageMode.disabled // Disable welcome message
         BugReporting.bugReportingOptions = [.emailFieldOptional]
+        //BugReporting.bugReportingOptions = [.emailFieldHidden]
         Luciq.setReproStepsFor(.all, with: .enable)
-        Luciq.setUserAttribute("beta", withKey: "Tester")
+        //Luciq.setUserAttribute("beta", withKey: "Tester")
         //Luciq.setAutoMaskScreenshots([.textInputs, .labels])
         Luciq.identifyUser(withID: "11", email: " ", name: nil)
+        let nowPlayingEnhanced = FeatureFlag(name: "now_playing_enhanced")
+        Luciq.add(featureFlag: nowPlayingEnhanced)
+        //Luciq.removeFeatureFlag("background_playback")
+        //let backgroundPlayback = FeatureFlag(name: "background_playback")
+        //Luciq.add(featureFlag: backgroundPlayback)
+        //BugReporting.extendedBugReportMode = .enabledWithRequiredFields
+        //BugReporting.autoScreenRecordingEnabled = true
+        
+
          
         //*****************************************My code******************************************************\\
         //SE beta
@@ -126,7 +142,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //Instabug.setReproStepsFor(.all, with: .enabledWithNoScreenshots)
         
         //Masking
-            //Instabug.setAutoMaskScreenshots([.textInputs ,.labels])
+            //Luciq.setAutoMaskScreenshots([.textInputs ,.labels])
             //Instabug.setAutoMaskScreenshots([.textInputs])
             //Instabug.setAutoMaskScreenshots([.labels])
             //Instabug.setAutoMaskScreenshots([.media])
@@ -176,6 +192,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //*****************************************End of my code******************************************************\\
 
         
+        
+        
+        //Bitdrift
+        
+         /*
+          Logger.start(
+           withAPIKey: "GiCR4xin7opN+YD39SNRkClrcLtgNcn6BhUsaPe0BdPNvSILRVFBSTdySUFKdTgo/gQ=",
+           sessionStrategy: .fixed(),
+         )
+          */
+         
         
         
         

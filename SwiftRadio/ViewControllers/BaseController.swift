@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import LuciqSDK
 
 class BaseController: UIViewController {
     
@@ -21,6 +22,14 @@ class BaseController: UIViewController {
     override func loadView() {
         super.loadView()
         setupViews()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        // Set user attribute with screen name
+        let screenName = String(describing: type(of: self)).replacingOccurrences(of: "ViewController", with: "")
+        Luciq.setUserAttribute(screenName, withKey: "Team Name")
     }
     
     func setupViews() {

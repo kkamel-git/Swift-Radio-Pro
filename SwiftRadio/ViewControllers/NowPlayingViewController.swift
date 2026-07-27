@@ -94,6 +94,14 @@ class NowPlayingViewController: UIViewController {
     
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        // Set user attribute with screen name
+        let screenName = String(describing: type(of: self)).replacingOccurrences(of: "ViewController", with: "")
+        Luciq.setUserAttribute(screenName, withKey: "Team Name")
+    }
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
@@ -102,8 +110,8 @@ class NowPlayingViewController: UIViewController {
             APM.endFlow(withName: "station-selection-flow")
         }
         
-        // Added by cursor for non-fatal reporting - start
-        // Report non-fatal error when user navigates back
+        // Added by cursor for non-fatal reporting - start (commented out)
+        /*
         let error = NSError(domain: "com.as.er", code: 303, userInfo: [
             "reason": "This is a test reason",
             "description": "This is a test error"
@@ -112,6 +120,7 @@ class NowPlayingViewController: UIViewController {
             nonfatal.stackTraceMode = .callerThread
             nonfatal.report()
         }
+        */
         // Added by cursor for non-fatal reporting - end
     }
     

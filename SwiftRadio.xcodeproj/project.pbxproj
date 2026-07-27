@@ -7,11 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		14A7718D2E31807D0042E6F6 /* Bugsnag in Frameworks */ = {isa = PBXBuildFile; productRef = 14A7718C2E31807D0042E6F6 /* Bugsnag */; };
-		14A7718F2E31807D0042E6F6 /* BugsnagNetworkRequestPlugin in Frameworks */ = {isa = PBXBuildFile; productRef = 14A7718E2E31807D0042E6F6 /* BugsnagNetworkRequestPlugin */; };
-		14A771922E3180DF0042E6F6 /* BugsnagPerformance in Frameworks */ = {isa = PBXBuildFile; productRef = 14A771912E3180DF0042E6F6 /* BugsnagPerformance */; };
-		14A771942E3180DF0042E6F6 /* BugsnagPerformanceSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 14A771932E3180DF0042E6F6 /* BugsnagPerformanceSwift */; };
-		14A771962E3180DF0042E6F6 /* BugsnagPerformanceSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 14A771952E3180DF0042E6F6 /* BugsnagPerformanceSwiftUI */; };
+		145AA5432F76B6F90079B511 /* Capture in Frameworks */ = {isa = PBXBuildFile; productRef = 145AA5422F76B6F90079B511 /* Capture */; };
+		145AA5452F76B6F90079B511 /* CaptureCocoaLumberjack in Frameworks */ = {isa = PBXBuildFile; productRef = 145AA5442F76B6F90079B511 /* CaptureCocoaLumberjack */; };
+		145AA5472F76B6F90079B511 /* CaptureSwiftyBeaver in Frameworks */ = {isa = PBXBuildFile; productRef = 145AA5462F76B6F90079B511 /* CaptureSwiftyBeaver */; };
 		14DC96472E893BC000BD3FFE /* Luciq in Frameworks */ = {isa = PBXBuildFile; productRef = 14DC96462E893BC000BD3FFE /* Luciq */; };
 		2C5545BD1C1124DE00728469 /* SwiftRadioUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5545BC1C1124DE00728469 /* SwiftRadioUITests.swift */; };
 		53113F39230C720900462C0E /* ShareActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53113F38230C720900462C0E /* ShareActivity.swift */; };
@@ -72,6 +70,8 @@
 		CE6A3E49291F376D0058C82A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF72ACE621F714D000461EED /* Main.storyboard */; };
 		CE6A3E4A291F376D0058C82A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5FDEE0211F72FF980064333C /* LaunchScreen.storyboard */; };
 		CE6A3E4B291F376D0058C82A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9409E1251ABF6FEA00312E2B /* Images.xcassets */; };
+		CE6A3E51291F376D0058C83A /* RadioUnavailableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6A3E50291F376D0058C83A /* RadioUnavailableViewController.swift */; };
+		CE6A3E52291F376D0058C83A /* RadioUnavailableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6A3E50291F376D0058C83A /* RadioUnavailableViewController.swift */; };
 		CE6ECCFA292F13DF008B3C16 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6ECCF9292F13DF008B3C16 /* Coordinator.swift */; };
 		CE6ECCFB292F13E6008B3C16 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6ECCF9292F13DF008B3C16 /* Coordinator.swift */; };
 		CE6ECCFD292F1445008B3C16 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6ECCFC292F1445008B3C16 /* MainCoordinator.swift */; };
@@ -134,6 +134,7 @@
 		CE6036182A48BA2500E15E15 /* UITableViewCell+reuseIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+reuseIdentifier.swift"; sourceTree = "<group>"; };
 		CE60361C2A48C4A400E15E15 /* NowPlayingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowPlayingView.swift; sourceTree = "<group>"; };
 		CE6A3E4F291F376D0058C82A /* SwiftRadio-CarPlay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SwiftRadio-CarPlay.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE6A3E50291F376D0058C83A /* RadioUnavailableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioUnavailableViewController.swift; sourceTree = "<group>"; };
 		CE6ECCF9292F13DF008B3C16 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		CE6ECCFC292F1445008B3C16 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 		CE6ECCFF292F215F008B3C16 /* Storyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboard.swift; sourceTree = "<group>"; };
@@ -161,15 +162,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				14DC96472E893BC000BD3FFE /* Luciq in Frameworks */,
-				14A7718D2E31807D0042E6F6 /* Bugsnag in Frameworks */,
 				CE37D7B7290F4A9700B0933B /* FRadioPlayer in Frameworks */,
+				145AA5472F76B6F90079B511 /* CaptureSwiftyBeaver in Frameworks */,
 				CE6036232A48C51A00E15E15 /* NVActivityIndicatorViewExtended in Frameworks */,
-				14A771922E3180DF0042E6F6 /* BugsnagPerformance in Frameworks */,
+				145AA5432F76B6F90079B511 /* Capture in Frameworks */,
 				CE37D7B4290F47E000B0933B /* Spring in Frameworks */,
+				145AA5452F76B6F90079B511 /* CaptureCocoaLumberjack in Frameworks */,
 				CE6036212A48C51A00E15E15 /* NVActivityIndicatorView in Frameworks */,
-				14A7718F2E31807D0042E6F6 /* BugsnagNetworkRequestPlugin in Frameworks */,
-				14A771962E3180DF0042E6F6 /* BugsnagPerformanceSwiftUI in Frameworks */,
-				14A771942E3180DF0042E6F6 /* BugsnagPerformanceSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -318,6 +317,7 @@
 				94452E4E1AD6F24700BFE7A5 /* PopUpMenuViewController.swift */,
 				9409E13F1ABF78B000312E2B /* NowPlayingViewController.swift */,
 				CE6036122A47A87A00E15E15 /* StationsViewController.swift */,
+				CE6A3E50291F376D0058C83A /* RadioUnavailableViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -378,12 +378,10 @@
 				CE37D7B6290F4A9700B0933B /* FRadioPlayer */,
 				CE6036202A48C51A00E15E15 /* NVActivityIndicatorView */,
 				CE6036222A48C51A00E15E15 /* NVActivityIndicatorViewExtended */,
-				14A7718C2E31807D0042E6F6 /* Bugsnag */,
-				14A7718E2E31807D0042E6F6 /* BugsnagNetworkRequestPlugin */,
-				14A771912E3180DF0042E6F6 /* BugsnagPerformance */,
-				14A771932E3180DF0042E6F6 /* BugsnagPerformanceSwift */,
-				14A771952E3180DF0042E6F6 /* BugsnagPerformanceSwiftUI */,
 				14DC96462E893BC000BD3FFE /* Luciq */,
+				145AA5422F76B6F90079B511 /* Capture */,
+				145AA5442F76B6F90079B511 /* CaptureCocoaLumberjack */,
+				145AA5462F76B6F90079B511 /* CaptureSwiftyBeaver */,
 			);
 			productName = RadioPro;
 			productReference = 9409E1161ABF6FEA00312E2B /* SwiftRadio.app */;
@@ -452,9 +450,8 @@
 				CE37D7B2290F47E000B0933B /* XCRemoteSwiftPackageReference "Spring" */,
 				CE37D7B5290F4A9700B0933B /* XCRemoteSwiftPackageReference "FRadioPlayer" */,
 				CE60361F2A48C51A00E15E15 /* XCRemoteSwiftPackageReference "NVActivityIndicatorView" */,
-				14A7718B2E31807D0042E6F6 /* XCRemoteSwiftPackageReference "bugsnag-cocoa" */,
-				14A771902E3180DF0042E6F6 /* XCRemoteSwiftPackageReference "bugsnag-cocoa-performance" */,
 				14DC96452E893BC000BD3FFE /* XCRemoteSwiftPackageReference "luciq-ios-sdk" */,
+				145AA5412F76B6F90079B511 /* XCRemoteSwiftPackageReference "capture-ios" */,
 			);
 			productRefGroup = 9409E1171ABF6FEA00312E2B /* Products */;
 			projectDirPath = "";
@@ -545,6 +542,7 @@
 				CE9EE8E1293C048A00F62041 /* LoaderController.swift in Sources */,
 				CEDABBEB291217AF00C0367F /* UIImageView+Cache.swift in Sources */,
 				CE6036132A47A87A00E15E15 /* StationsViewController.swift in Sources */,
+				CE6A3E51291F376D0058C83A /* RadioUnavailableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -580,6 +578,7 @@
 				CE9EE8E2293C048A00F62041 /* LoaderController.swift in Sources */,
 				CE6A3E41291F376D0058C82A /* UIImageView+Cache.swift in Sources */,
 				CE6036142A47A87A00E15E15 /* StationsViewController.swift in Sources */,
+				CE6A3E52291F376D0058C83A /* RadioUnavailableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -912,27 +911,20 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		14A7718B2E31807D0042E6F6 /* XCRemoteSwiftPackageReference "bugsnag-cocoa" */ = {
+		145AA5412F76B6F90079B511 /* XCRemoteSwiftPackageReference "capture-ios" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/bugsnag/bugsnag-cocoa";
+			repositoryURL = "https://github.com/bitdriftlabs/capture-ios";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 6.32.2;
-			};
-		};
-		14A771902E3180DF0042E6F6 /* XCRemoteSwiftPackageReference "bugsnag-cocoa-performance" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/bugsnag/bugsnag-cocoa-performance";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.14.0;
+				minimumVersion = 0.22.13;
 			};
 		};
 		14DC96452E893BC000BD3FFE /* XCRemoteSwiftPackageReference "luciq-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/luciqai/luciq-ios-sdk";
 			requirement = {
-				kind = upToNextMajorVersion;
+				kind = versionRange;
+				maximumVersion = 50.0.0;
 				minimumVersion = 19.0.0;
 			};
 		};
@@ -979,30 +971,20 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		14A7718C2E31807D0042E6F6 /* Bugsnag */ = {
+		145AA5422F76B6F90079B511 /* Capture */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 14A7718B2E31807D0042E6F6 /* XCRemoteSwiftPackageReference "bugsnag-cocoa" */;
-			productName = Bugsnag;
+			package = 145AA5412F76B6F90079B511 /* XCRemoteSwiftPackageReference "capture-ios" */;
+			productName = Capture;
 		};
-		14A7718E2E31807D0042E6F6 /* BugsnagNetworkRequestPlugin */ = {
+		145AA5442F76B6F90079B511 /* CaptureCocoaLumberjack */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 14A7718B2E31807D0042E6F6 /* XCRemoteSwiftPackageReference "bugsnag-cocoa" */;
-			productName = BugsnagNetworkRequestPlugin;
+			package = 145AA5412F76B6F90079B511 /* XCRemoteSwiftPackageReference "capture-ios" */;
+			productName = CaptureCocoaLumberjack;
 		};
-		14A771912E3180DF0042E6F6 /* BugsnagPerformance */ = {
+		145AA5462F76B6F90079B511 /* CaptureSwiftyBeaver */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 14A771902E3180DF0042E6F6 /* XCRemoteSwiftPackageReference "bugsnag-cocoa-performance" */;
-			productName = BugsnagPerformance;
-		};
-		14A771932E3180DF0042E6F6 /* BugsnagPerformanceSwift */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 14A771902E3180DF0042E6F6 /* XCRemoteSwiftPackageReference "bugsnag-cocoa-performance" */;
-			productName = BugsnagPerformanceSwift;
-		};
-		14A771952E3180DF0042E6F6 /* BugsnagPerformanceSwiftUI */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 14A771902E3180DF0042E6F6 /* XCRemoteSwiftPackageReference "bugsnag-cocoa-performance" */;
-			productName = BugsnagPerformanceSwiftUI;
+			package = 145AA5412F76B6F90079B511 /* XCRemoteSwiftPackageReference "capture-ios" */;
+			productName = CaptureSwiftyBeaver;
 		};
 		14DC96462E893BC000BD3FFE /* Luciq */ = {
 			isa = XCSwiftPackageProductDependency;
