@@ -18,13 +18,21 @@ class InfoDetailViewController: UIViewController {
     @IBOutlet weak var stationLongDescTextView: UITextView!
     @IBOutlet weak var okayButton: UIButton!
     
-    var currentStation: RadioStation!
-    
+    var currentStation: RadioStation?
+
     // MARK: - ViewDidLoad
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
+        guard currentStation != nil else {
+            // Guard against presenting this screen without a station to avoid
+            // a force-unwrap crash (e.g. Info button tapped while no station is playing)
+            assertionFailure("InfoDetailViewController presented without a currentStation")
+            navigationController?.popViewController(animated: false)
+            return
+        }
+
         setupStationText()
         setupStationLogo()
         
@@ -66,11 +74,12 @@ class InfoDetailViewController: UIViewController {
     // MARK: - UI Helpers
 
     func setupStationText() {
-        
+        guard let currentStation = currentStation else { return }
+
         // Display Station Name & Short Desc
         stationNameLabel.text = currentStation.name
         stationDescLabel.text = currentStation.desc
-        
+
         // Display Station Long Desc
         if currentStation.longDesc == "" {
             loadDefaultText()
@@ -85,12 +94,13 @@ class InfoDetailViewController: UIViewController {
     }
     
     func setupStationLogo() {
-        
+        guard let currentStation = currentStation else { return }
+
         // Display Station Image/Logo
         currentStation.getImage { [weak self] image in
             self?.stationImageView.image = image
         }
-        
+
         // Apply shadow to Station Image
         stationImageView.applyShadow()
     }
