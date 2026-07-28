@@ -33,8 +33,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/luciqai/luciq-ios-sdk",
       "state" : {
-        "revision" : "6d8b21ef2ba323ff4cb31d929bcfb2c25c2f6d3b",
-        "version" : "19.8.1"
+        "revision" : "8c492e55eab9b04baa8d62c0543e1de3121897bb",
+        "version" : "19.9.3"
       }
     },
     {

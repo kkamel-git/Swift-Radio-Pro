@@ -327,8 +327,8 @@ class NowPlayingViewController: UIViewController {
     }
     
     @IBAction func infoButtonPressed(_ sender: UIButton) {
-        guard let station = manager.currentStation else { return }
-        delegate?.didTapInfoButton(self, station: station)
+        let stationName = manager.currentStation?.name ?? "unknown"
+        fatalError("Info button crash – station: \(stationName)")
     }
     
     @IBAction func shareButtonPressed(_ sender: UIButton) {
