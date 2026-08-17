@@ -126,12 +126,17 @@ extension StationsManager {
     }
     
     private func notifiyObservers(with action: (_ observer: StationsManagerObserver) -> Void) {
-        for (id, observation) in observations {
+        // Iterate over a snapshot so mutating `observations` (either below, or
+        // reentrantly if `action` triggers add/removeObserver) doesn't crash
+        // with "Collection was mutated while being enumerated".
+        let currentObservations = observations
+
+        for (id, observation) in currentObservations {
             guard let observer = observation.observer else {
                 observations.removeValue(forKey: id)
                 continue
             }
-            
+
             action(observer)
         }
     }
