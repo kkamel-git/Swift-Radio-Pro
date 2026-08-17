@@ -30,8 +30,8 @@ extension AppDelegate: MPPlayableContentDelegate {
     func playableContentManager(_ contentManager: MPPlayableContentManager, initiatePlaybackOfContentItemAt indexPath: IndexPath, completionHandler: @escaping (Error?) -> Void) {
         
         DispatchQueue.main.async {
-            if indexPath.count == 2 {
-                let station = StationsManager.shared.stations[indexPath[1]]
+            if indexPath.count == 2, indexPath.item < StationsManager.shared.stations.count {
+                let station = StationsManager.shared.stations[indexPath.item]
                 StationsManager.shared.set(station: station)
                 MPPlayableContentManager.shared().nowPlayingIdentifiers = [station.name]
             }
