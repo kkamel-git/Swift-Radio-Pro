@@ -43,8 +43,15 @@ final class RadioUnavailableViewController: UIViewController {
         ])
     }
 
+    /// Guards against reporting the same non-fatal more than once. `viewDidAppear` can fire
+    /// repeatedly for the same presentation (e.g. the app backgrounding and foregrounding while
+    /// this sheet is on screen), which previously caused a duplicate non-fatal report per appearance.
+    private var hasReportedError = false
+
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        guard !hasReportedError else { return }
+        hasReportedError = true
         reportRadioStationLoadingError()
     }
 
