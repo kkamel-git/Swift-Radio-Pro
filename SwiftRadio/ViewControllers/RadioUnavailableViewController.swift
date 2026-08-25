@@ -43,16 +43,23 @@ final class RadioUnavailableViewController: UIViewController {
         ])
     }
 
+    /// Guards against re-reporting the same non-fatal if `viewDidAppear` fires again,
+    /// e.g. when the user drags the page sheet down and the interactive dismissal is cancelled.
+    private var hasReportedStationLoadingError = false
+
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        reportRadioStationLoadingError()
+        reportRadioStationLoadingErrorOnce()
     }
 
     @objc private func dismissTapped() {
         dismiss(animated: true)
     }
 
-    private func reportRadioStationLoadingError() {
+    private func reportRadioStationLoadingErrorOnce() {
+        guard !hasReportedStationLoadingError else { return }
+        hasReportedStationLoadingError = true
+
         let error = NSError(
             domain: "SwiftRadio",
             code: -1,
