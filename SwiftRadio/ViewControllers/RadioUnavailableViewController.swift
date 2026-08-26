@@ -27,6 +27,8 @@ final class RadioUnavailableViewController: UIViewController {
         return button
     }()
 
+    private var hasReportedLoadingError = false
+
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
@@ -53,6 +55,13 @@ final class RadioUnavailableViewController: UIViewController {
     }
 
     private func reportRadioStationLoadingError() {
+        // viewDidAppear can fire more than once for a single presentation of this
+        // page sheet (e.g. the user drags the grabber to start an interactive
+        // dismissal and lets go before it completes), so guard against reporting
+        // the same non-fatal multiple times for one "station unavailable" event.
+        guard !hasReportedLoadingError else { return }
+        hasReportedLoadingError = true
+
         let error = NSError(
             domain: "SwiftRadio",
             code: -1,
