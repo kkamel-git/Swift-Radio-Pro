@@ -79,14 +79,20 @@ class StationsManager {
     }
     
     func setNext() {
-        guard let index = getIndex(of: currentStation) else { return }
-        let station = (index + 1 == stations.count) ? stations[0] : stations[index + 1]
-        currentStation = station
-        player.radioURL = URL(string: station.streamURL)
+        setStation(offsetBy: 1)
     }
-    
+
     func setPrevious() {
-        guard let index = getIndex(of: currentStation), let station = (index == 0) ? stations.last : stations[index - 1] else { return }
+        setStation(offsetBy: -1)
+    }
+
+    // Moves to the station at `offset` positions from the current one, wrapping around the
+    // ends of the list. Guards against an empty/stale `stations` list so rapid, repeated
+    // next/previous taps can never index out of bounds.
+    private func setStation(offsetBy offset: Int) {
+        guard !stations.isEmpty, let index = getIndex(of: currentStation) else { return }
+        let newIndex = ((index + offset) % stations.count + stations.count) % stations.count
+        let station = stations[newIndex]
         currentStation = station
         player.radioURL = URL(string: station.streamURL)
     }
