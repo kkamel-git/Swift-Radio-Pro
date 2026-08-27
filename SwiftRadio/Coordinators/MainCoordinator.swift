@@ -109,8 +109,6 @@ extension MainCoordinator: PopUpMenuViewControllerDelegate {
     }
     
     func didTapAboutButton(_ popUpMenuViewController: PopUpMenuViewController) {
-        // Demo: freeze main thread for 5 seconds so Luciq can detect and report an app hang
-        Thread.sleep(forTimeInterval: 5)
         openAbout(in: popUpMenuViewController)
     }
 }
