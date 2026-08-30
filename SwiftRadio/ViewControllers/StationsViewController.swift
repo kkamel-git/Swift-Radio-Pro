@@ -230,25 +230,8 @@ extension StationsViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        
+
         let station = searchController.isActive ? manager.searchedStations[indexPath.item] : manager.stations[indexPath.item]
-        let webpageURL = "https://radio.swiftradio.app/stations/\(station.name.lowercased().replacingOccurrences(of: " ", with: "-"))"
-        
-        LCQLog.logInfo("WebView Page Load | webview_event=page_load | webpage_url=\(webpageURL) | page_title=\(station.name) | referrer=https://radio.swiftradio.app/stations | webview_id=main_webview | load_type=navigation")
-        
-        Luciq.logUserEvent(withName: "WebView Page Load", parameters: [
-            UserEventParam(key: "webview_event", value: "page_load"),
-            UserEventParam(key: "webpage_url", value: webpageURL),
-            UserEventParam(key: "page_title", value: station.name),
-            UserEventParam(key: "referrer", value: "https://radio.swiftradio.app/stations"),
-            UserEventParam(key: "webview_id", value: "main_webview"),
-            UserEventParam(key: "load_type", value: "navigation")
-        ])
-        
-        // Start flow instrumentation ONLY when user selects "Absolute Country Hits"
-        if station.name == "Absolute Country Hits" {
-            APM.startFlow(withName: "station-selection-flow")
-        }
 
         // Classic Rock: show "This radio can't be played" and report non-fatal
         if station.name == "Classic Rock" {
@@ -261,10 +244,34 @@ extension StationsViewController: UITableViewDelegate {
                 }
             }
             present(unavailableVC, animated: true)
-            return
+        } else {
+            pushNowPlayingController(with: station)
         }
 
-        pushNowPlayingController(with: station)
+        // Analytics/APM instrumentation is deferred to the next run loop turn so
+        // Luciq SDK work never shares the main thread with the navigation
+        // transition it's timed against (see App Hang #102: main thread stalled
+        // for 3s+ inside UIKit's nav bar item transition immediately after this
+        // handler ran on the same thread).
+        DispatchQueue.main.async {
+            let webpageURL = "https://radio.swiftradio.app/stations/\(station.name.lowercased().replacingOccurrences(of: " ", with: "-"))"
+
+            LCQLog.logInfo("WebView Page Load | webview_event=page_load | webpage_url=\(webpageURL) | page_title=\(station.name) | referrer=https://radio.swiftradio.app/stations | webview_id=main_webview | load_type=navigation")
+
+            Luciq.logUserEvent(withName: "WebView Page Load", parameters: [
+                UserEventParam(key: "webview_event", value: "page_load"),
+                UserEventParam(key: "webpage_url", value: webpageURL),
+                UserEventParam(key: "page_title", value: station.name),
+                UserEventParam(key: "referrer", value: "https://radio.swiftradio.app/stations"),
+                UserEventParam(key: "webview_id", value: "main_webview"),
+                UserEventParam(key: "load_type", value: "navigation")
+            ])
+
+            // Start flow instrumentation ONLY when user selects "Absolute Country Hits"
+            if station.name == "Absolute Country Hits" {
+                APM.startFlow(withName: "station-selection-flow")
+            }
+        }
     }
 }
 
