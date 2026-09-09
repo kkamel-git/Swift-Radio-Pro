@@ -79,14 +79,17 @@ class StationsManager {
     }
     
     func setNext() {
-        guard let index = getIndex(of: currentStation) else { return }
-        let station = (index + 1 == stations.count) ? stations[0] : stations[index + 1]
+        guard !stations.isEmpty, let index = getIndex(of: currentStation) else { return }
+        let nextIndex = (index + 1) % stations.count
+        guard let station = stations[safe: nextIndex] else { return }
         currentStation = station
         player.radioURL = URL(string: station.streamURL)
     }
-    
+
     func setPrevious() {
-        guard let index = getIndex(of: currentStation), let station = (index == 0) ? stations.last : stations[index - 1] else { return }
+        guard !stations.isEmpty, let index = getIndex(of: currentStation) else { return }
+        let previousIndex = (index == 0) ? stations.count - 1 : index - 1
+        guard let station = stations[safe: previousIndex] else { return }
         currentStation = station
         player.radioURL = URL(string: station.streamURL)
     }
