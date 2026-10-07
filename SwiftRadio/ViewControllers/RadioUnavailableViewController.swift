@@ -27,6 +27,8 @@ final class RadioUnavailableViewController: UIViewController {
         return button
     }()
 
+    private var hasReportedError = false
+
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
@@ -45,6 +47,9 @@ final class RadioUnavailableViewController: UIViewController {
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        // viewDidAppear fires again after e.g. a covering sheet is dismissed; report once per presentation.
+        guard !hasReportedError else { return }
+        hasReportedError = true
         reportRadioStationLoadingError()
     }
 
