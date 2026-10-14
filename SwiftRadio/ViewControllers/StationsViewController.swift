@@ -250,20 +250,6 @@ extension StationsViewController: UITableViewDelegate {
             APM.startFlow(withName: "station-selection-flow")
         }
 
-        // Classic Rock: show "This radio can't be played" and report non-fatal
-        if station.name == "Classic Rock" {
-            let unavailableVC = RadioUnavailableViewController()
-            unavailableVC.modalPresentationStyle = .pageSheet
-            if #available(iOS 15.0, *) {
-                if let sheet = unavailableVC.sheetPresentationController {
-                    sheet.detents = [.medium()]
-                    sheet.prefersGrabberVisible = true
-                }
-            }
-            present(unavailableVC, animated: true)
-            return
-        }
-
         pushNowPlayingController(with: station)
     }
 }
